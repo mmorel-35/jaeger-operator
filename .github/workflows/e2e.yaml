@@ -1,4 +1,4 @@
-name: "Run E2E ${{ inputs.testsuite_name }} test suite"
+run-name: "Run E2E ${{ inputs.testsuite_name }} test suite"
 on:
   workflow_call:
     inputs:
