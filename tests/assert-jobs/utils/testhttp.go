@@ -55,14 +55,14 @@ func TestGetHTTP(url string, params *TestParams, testFn func(response *http.Resp
 				logrus.Info("Doing request number ", retries)
 
 				res, err := client.Do(req)
-				if err != nil && strings.Contains(err.Error(), "Timeout exceeded") {
+				switch {case err != nil && strings.Contains(err.Error(), "Timeout exceeded"):
 					failed = true
 					logrus.Warn("Timeout exceeded!")
-				} else if res != nil && res.StatusCode != http.StatusOK {
+				case res != nil && res.StatusCode != http.StatusOK:
 					err = fmt.Errorf("unexpected status code %d", res.StatusCode)
 					failed = true
 					logrus.Warn("Status code: ", res.StatusCode)
-				} else if err != nil {
+				case err != nil:
 					failed = true
 					logrus.Warn("Something failed during doing the request: ", err.Error())
 				}
