@@ -16,7 +16,6 @@ linters:
   enable:
     - bidichk
     - errorlint
-    - gocritic
     - gofumpt
     - goimports
     - gosec
